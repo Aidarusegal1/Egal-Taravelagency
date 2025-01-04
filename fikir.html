@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egal Travel Agency</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <h1>Egal Travel Agency</h1>
+        <p>Discover Somaliland like never before!</p>
+        <a href="#register" class="btn">Register Now</a>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Welcome to Egal Travel Agency, your premier travel agency in Hargeisa, Somaliland. We are passionate about showcasing the beauty and rich culture of Somaliland to travelers from around the world. Our mission is to provide unforgettable travel experiences, whether you're exploring Somaliland's stunning landscapes, vibrant markets, or ancient history.</p>
+        </section>
+
+        <section id="moving-pics">
+            <img src="https://i.redd.it/9b8m1bfn8b351.jpg" alt="Borama" class="moving-img">
+            <img src="https://pbs.twimg.com/media/GLNghpmWcAAUEbw?format=jpg&name=large" alt="Image 2" class="moving-img">
+            <img src="https://somalilandtours.com/wp-content/uploads/2020/06/Dhagah-Khoure.jpg" alt="Image 3" class="moving-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZkKeeoJKIICfRAYe46G6fPKQ_jqiewg9YzM5wbPrUuvvjxa4HbycWWt8FclCuGlSi8KI&usqp=CAU" alt="Image 4" class="moving-img">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/00/b1/33/beautiful-gardens.jpg?w=600&h=400&s=1" alt="Image 5" class="moving-img">
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li><strong>Customized travel itineraries:</strong> Tailor your trip according to your interests and preferences.</li>
+                <li><strong>Accommodation bookings:</strong> Find the perfect place to stay, from hotels to guesthouses.</li>
+                <li><strong>Guided tours:</strong> Explore Somaliland with our knowledgeable guides who will share insights and stories about the region.</li>
+                <li><strong>Transportation arrangements:</strong> Convenient travel options to ensure a smooth journey.</li>
+                <li><strong>Travel advice and support:</strong> Our team is here to assist you with any questions or concerns before and during your trip.</li>
+            </ul>
+        </section>
+
+        <section id="register">
+            <h2>Register with Us</h2>
+            <form>
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="number-of-people">Number of People:</label>
+                <input type="number" id="number-of-people" name="number-of-people" min="1" required onchange="updatePrice()">
+
+                <label for="location">Select a Location:</label>
+                <select id="location" name="location" onchange="updatePrice()">
+                    <option value="barbara">Barbara</option>
+                    <option value="sheekh">Sheekh</option>
+                    <option value="dhagax_guure">Dhagax Guure</option>
+                    <option value="daalo">Daalo</option>
+                    <option value="hargeisa">Hargeisa</option>
+                    <option value="gabilay">Gabilay</option>
+                    <option value="xiis_iyo_maydh">Xiis iyo Maydh</option>
+                </select>
+
+                <p>Price: $<span id="city-price">25</span></p>
+
+                <label for="payment-method">Select Payment Method:</label>
+                <select id="payment-method" name="payment-method" onchange="updatePrefix()">
+                    <option value="credit_card">Credit Card</option>
+                    <option value="telesom">Telesom</option>
+                    <option value="somtel">Somtel</option>
+                </select>
+
+                <label for="payment-number">Payment Number:</label>
+                <input type="text" id="payment-number" name="payment-number" required>
+
+                <label for="calendar">Select a Date:</label>
+                <input type="date" id="calendar" name="calendar" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section id="opening-times">
+            <h2 style="color: blue;">Opening Times</h2>
+            <ul>
+                <li>Saturday: 5:00 AM - 11:50 PM</li>
+                <li>Sunday: 5:00 AM - 11:50 PM</li>
+                <li>Monday: 5:00 AM - 11:50 PM</li>
+                <li>Tuesday: 5:00 AM - 11:50 PM</li>
+                <li>Wednesday: 5:00 AM - 11:50 PM</li>
+                <li>Thursday: 5:00 AM - 11:50 PM</li>
+                <li>Friday: 5:00 AM - 11:50 PM</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2 style="color: red;">Contact Us</h2>
+            <p>Email: <a href="mailto:aidarusegal@gmail.com">aidarusegal@gmail.com</a></p>
+            <p>Phone: <a href="tel:+252634022490">+252634022490</a>, <a href="tel:+252633552372">+252633552372</a></p>
+            <p>Location: New Hargeisa, Road Number One, Somaliland</p>
+        </section>
+    </main>
+
+    <footer>
+        <p style="text-align: center;">&copy; 2025 Egal Travel Agency. All rights reserved.</p>
+        <p style="text-align: center;">MAHADSANID</p>
+    </footer>
+
+    <script>
+        // Moving pictures cycle
+        const images = document.querySelectorAll('#moving-pics img');
+        let currentIndex = 0;
+
+        setInterval(() => {
+            images[currentIndex].style.display = 'none'; // Hide current image
+            currentIndex = (currentIndex + 1) % images.length; // Move to the next image
+            images[currentIndex].style.display = 'block'; // Show the next image
+        }, 5000); // 5 seconds interval
+
+        // Update price based on selected city and number of people
+        function updatePrice() {
+            const city = document.getElementById('location').value;
+            const numPeople = document.getElementById('number-of-people').value;
+            const priceDisplay = document.getElementById('city-price');
+
+            // Define city prices
+            const cityPrices = {
+                barbara: 25,
+                Sheekh: 23,
+                dhagax_guure: 15,
+                daalo: 30,
+                Hargeisa: 35,
+                gabilay: 28,
+                xiis_iyo_maydh: 32
+            };
+
+            // Calculate total price based on number of people
+            const cityPrice = cityPrices[city] || 0;
+            const totalPrice = cityPrice * numPeople;
+            priceDisplay.textContent = totalPrice;
+        }
+
+        // Update phone number prefix based on payment method
+        function updatePrefix() {
+            const paymentMethod = document.getElementById('payment-method').value;
+            const paymentNumberInput = document.getElementById('payment-number');
+            
+            if (paymentMethod === 'telesom') {
+                paymentNumberInput.value = '063'; // Automatically add Telesom prefix
+            } else if (paymentMethod === 'somtel') {
+                paymentNumberInput.value = '065'; // Automatically add Somtel prefix
+            }
+        }
+    </script>
+</body>
+</html>
